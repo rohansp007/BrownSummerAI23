@@ -13,7 +13,7 @@ while boolean2:
         print(f'{hours_task_2} hours is {60*hours_task_2} minutes.')
         boolean2 = False
     elif user_input == "M":
-        minutes = float(input("How many minutes?"))
+        minutes = float(input("How many minutes? "))
         print(f'{minutes} minutes is {minutes/60} hours.')
         boolean2 = False
     else:
