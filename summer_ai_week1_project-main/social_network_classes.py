@@ -1,18 +1,25 @@
 social_network = []
-social_network_friends = []
 
 class Person():
-    def __init__(self,user_id,age,password,friendlist=[],blockedlist=[]):
+    def __init__(self,user_id,age,password,friendlist,blockedlist):
         self.age = age
         self.user_id = user_id
         self.password = password
         self.friendlist=[]
         self.blockedlist = []
     
-    def create_account(self,new_name,new_age,new_password):
-        social_network.append(Person(new_name,new_age,new_password))
-
-class Friends():
-    def __init__(self,friendlist,blockedlist):
-        self.friendlist = []
-        self.blockedlist = []
+    def create_account(self,new_name,new_age,new_password,new_friendlist,new_blockedlist):
+        social_network.append(Person(new_name,new_age,new_password,new_friendlist,new_blockedlist))
+    
+    def add_friend(self,new_friend):
+        self.friendlist.append(new_friend)
+    
+    def view_all_friends(self,username):
+        for persona in social_network:
+            if (persona.user_id == username):
+                for friend in persona.friendlist:
+                    print(friend)
+    
+    def block_friend(self,blocked_friend):
+        self.friendlist.remove(blocked_friend)
+        self.blockedlist.append(blocked_friend)
