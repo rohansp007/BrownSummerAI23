@@ -1,4 +1,4 @@
-from social_network_classes import social_network,Person,FriendList,all_friends_lists
+from social_network_classes import social_network,Person,all_friends_lists
 
 def userLogin():
     login_name = input("What is your user ID? ")

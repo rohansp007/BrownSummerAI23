@@ -1,4 +1,4 @@
-from  social_network_classes import social_network,Person,all_friends_lists,FriendList
+from  social_network_classes import social_network,Person,all_friends_lists
 import social_network_ui
 
 if __name__ == "__main__":
