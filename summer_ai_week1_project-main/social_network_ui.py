@@ -1,4 +1,4 @@
-from social_network_classes import social_network,Person
+from social_network_classes import social_network,Person,FriendList,all_friends_lists
 
 def userLogin():
     login_name = input("What is your user ID? ")
@@ -24,8 +24,10 @@ def createAccount():
                 print("User ID is already in use!")
                 able_create = True
         if able_create == False:
-            person = Person(create_userid,create_age,create_password,[],[])
-            person.create_account(create_userid,create_age,create_password,[],[])
+            person = Person(create_userid,create_age,create_password)
+            person.create_account(create_userid,create_age,create_password)
+            friendlist1 = FriendList([])
+            all_friends_lists.append(friendlist1.friendlist)
             able_create = True
 
 def mainMenu():
