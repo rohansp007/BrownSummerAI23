@@ -1,0 +1,41 @@
+I did not buy a lottery ticket.
+I bought a lottery ticket or I won the jackpot.
+I bought a lottery ticket and I won the jackpot.
+If I buy a lottery ticket then I won the jackpot.
+If I did not buy a lottery ticket then I did not win the jackpot.
+I did not buy a lottery ticket or I did buy a lottery and I won the jackpot.
+(R ^ -OU) -> GW
+
+(not D and E) - True
+E = True
+D = False
+
+(C or D) - True
+D = False
+C = True
+
+(B then not C) - True
+not C - False
+B - False
+
+(A or B) - True
+B - False
+A - True
+
+Object - Some noun (Ex. Apple, Banana, etc.)
+Functions - Take in some object as the input and outputs another object.
+Predicates - Take in objects and return some true or false statement.
+
+1. Room:
+Objects - Desks, Chairs, Tables, People, Laptops
+Functions - colorofDesk, colorofChair, colorofTable, colorofLaptop, DOBofPeople
+Predicates - isAdjacent, isTable, isTall, isBrown, CanBeSeated
+
+Quantifiers - Make generic statements of properties of collections of objects in KB
+- Existential - Object exists so sentence is true (Weak quantifier, strong sentence)
+- Universal - Always true (Strong quantifier, weak sentence)
+
+Activity:
+For every A, there exists a B such that IsBook(A) -> AuthorOf(A,B)
+AuthorOf(Lean In, Shreyl Sandberg)
+For every A, IsBook(A) -> not(AuthorOf(A,Mark))

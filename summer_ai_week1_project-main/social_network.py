@@ -33,7 +33,7 @@ while True:
                 while not updated_user_found:
                     for index in range(len(social_network)):
                         if (social_network[index].user_id == current_userid):
-                            social_network[index] = Person(updated_userid,updated_age,updated_password,[],[])
+                            social_network[index] = Person(updated_userid,updated_age,updated_password,[])
                             print("User info successfuly updated!") 
                             updated_user_found = True
                             break
@@ -69,17 +69,25 @@ while True:
             if manage_choice == '3':
                 current_userid = input("What is your username? ")
                 current_password = input("What is your password? ")
-                found_object = False
                 for person3 in social_network:
                     if (person3.user_id == current_userid):
                         for element in person3.friendlist:
                             print(element)
-                if found_object == False:
-                    print("Couldn't find user!")
             if manage_choice == '4':
                 current_userid = input("What is your username? ")
                 current_password = input("What is your password? ")
                 blocked_friend = input("What is the username of the user you'd like to block? ")
+                done_blocked = True
+                while done_blocked:
+                    for person_class in social_network:
+                        if (person_class.user_id == current_userid):
+                            for friend1 in person_class.friendlist:
+                                if blocked_friend == friend1.user_id:
+                                    person_class.blocked_friend(friend1)
+                                    print("Friend removed successfully!")
+                                    done_blocked = False
+                    if done_blocked == True:
+                        print("Incorrect credentials!")
             if manage_choice == '5':
                 current_userid = input("What is your username? ")
                 current_password = input("What is your password? ")

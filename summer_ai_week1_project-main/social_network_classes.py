@@ -1,13 +1,12 @@
 social_network = []
 
 class Person():
-    def __init__(self,user_id,age,password,friendlist,blockedlist):
-        self.age = age
+    def __init__(self,user_id,age,password,friendlist):
         self.user_id = user_id
+        self.age = age
         self.password = password
         self.friendlist=[]
-        self.blockedlist = []
-    
+
     def create_account(self,new_name,new_age,new_password,new_friendlist,new_blockedlist):
         social_network.append(Person(new_name,new_age,new_password,new_friendlist,new_blockedlist))
     
@@ -22,4 +21,3 @@ class Person():
     
     def block_friend(self,blocked_friend):
         self.friendlist.remove(blocked_friend)
-        self.blockedlist.append(blocked_friend)
