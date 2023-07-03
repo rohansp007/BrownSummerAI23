@@ -27,7 +27,7 @@ def createAccount():
             person = Person(create_userid,create_age,create_password)
             person.create_account(create_userid,create_age,create_password)
             friendlist1 = FriendList([])
-            all_friends_lists.append(friendlist1)
+            all_friends_lists.append(friendlist1.friendlist)
             able_create = True
 
 def mainMenu():
