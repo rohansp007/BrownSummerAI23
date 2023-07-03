@@ -55,9 +55,9 @@ while True:
                     print("Something went wrong!")
                 while not user_exist:
                     for person2 in social_network:
-                        if (person2.user_id not in all_friends_lists[index].friendlist):
+                        if (person2.user_id not in (all_friends_lists[current_index]).friendlist):
                             if (person2.user_id == new_friend):
-                                all_friends_lists[current_index].add_friend(new_friend)
+                               all_friends_lists[current_index] = all_friends_lists[current_index].add_friend(new_friend)
                     if user_exist == False:
                         print("Error! Make sure friend hasn't already been added or exists!")
                         user_exist = True
