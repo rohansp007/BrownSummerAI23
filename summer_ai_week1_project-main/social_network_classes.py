@@ -8,3 +8,4 @@ class Person():
 
     def create_account(self,new_name,new_age,new_password):
         social_network.append(Person(new_name,new_age,new_password))
+
