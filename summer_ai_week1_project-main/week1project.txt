@@ -1,0 +1,53 @@
+UML Diagram:
+
+Object: Person
+
+Attributes:
+user_id (str)
+age (int)
+password (str)
+friendlist (list)
+receivedmessages (list)
+sentmessages (list)
+
+Methods:
+create_account
+add_friend
+view_all_friends
+block_friend
+send_message
+all_sent_messages
+
+Functionalities:
+Creating an Account:
+1. Ask for user_id, age, and password.
+2. Set the friendlist, receivedmessages, and sentmessages as empty lists.
+3. Instantiate the object and add it to a list consisting of all users.
+
+Editing Account Details:
+1. Ask for the user_id and password and check if they're in the social network.
+2. Ask them what they want to change their user_id, age, and password to.
+3. Make these changes and apply those changes to the list.
+
+Adding Friends:
+1. Ask for the user_id and password and check if they're in the social network list.
+2. Ask the user the friend they want to add.
+3. Check if that user exists and if they do, append it to the friendlist.
+
+Viewing All Friends:
+1. Ask for the user_id and password and check if they're in the social network list.
+2. Display every friend for that user.
+
+Blocking Friends:
+1. Ask for the user_id and password and check if they're in the social network list.
+2. Ask the user the friend they want to block.
+3. Check if that user exists and if they do, remove it from the friendlist.
+
+Sending Messages: 
+1. Ask for the user_id and password and check if they're in the social network list.
+2. Ask the user what message they want to send and to whom.
+3. Append the message to the sender's sentmessages list and to the recipient's receivedmessages list.
+
+View all Messages:
+1. Ask for the user_id and password and check if they're in the social network list.
+2. Display every element in the user's receivedmessages list.
