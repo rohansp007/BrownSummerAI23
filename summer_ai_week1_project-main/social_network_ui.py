@@ -1,4 +1,4 @@
-from social_network_classes import social_network,Person,all_friends_lists
+from social_network_classes import social_network,Person
 
 def userLogin():
     login_name = input("What is your user ID? ")
@@ -24,11 +24,8 @@ def createAccount():
                 print("User ID is already in use!")
                 able_create = True
         if able_create == False:
-            person = Person(create_userid,create_age,create_password)
-            person.create_account(create_userid,create_age,create_password)
-            friendlist1 = []
-            all_friends_lists.append(friendlist1)
-            print(all_friends_lists)
+            person = Person(create_userid,create_age,create_password,[],[],[])
+            person.create_account(create_userid,create_age,create_password,[],[],[])
             able_create = True
 
 def mainMenu():
@@ -46,7 +43,8 @@ def manageAccountMenu():
     print("2. Add a friend")
     print("3. View all my friends")
     print("4. Block a friend")
-    print("5. Send Messages")
-    print("6. View all my Messages")
-    print("7. <- Go Back")
+    print("5. Send a message")
+    print("6. View all messages sent to me")
+    print("7. View all messages sent by me")
+    print("8. <- Go Back")
     return input("Please Choose a number: ")
