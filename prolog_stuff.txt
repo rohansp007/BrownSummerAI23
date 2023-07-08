@@ -1,0 +1,8 @@
+:- means IF
+, means AND
+; means OR
+not() means NOT
+-> means IF/ELSE
+
+lowercase means constant
+uppercase means variable
