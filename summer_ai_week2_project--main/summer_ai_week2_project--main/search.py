@@ -97,9 +97,10 @@ def depthFirstSearch(problem: SearchProblem):
             visited_nodes.append(current_state)
             children = problem.getSuccessors(current_state)
             for el in problem.getSuccessors(current_state):
-                if (el not in visited_nodes):
+                if (el[0] not in visited_nodes) and not(frontier_dfs.containsElement(el[0])):
                     frontier_dfs.push(el[0])
-                
+
+                    
 def breadthFirstSearch(problem: SearchProblem):
     """Search the shallowest nodes in the search tree first."""
     "*** YOUR CODE HERE ***"
