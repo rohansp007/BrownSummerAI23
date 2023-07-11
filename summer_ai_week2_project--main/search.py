@@ -19,6 +19,11 @@ Pacman agents (in searchAgents.py).
 
 import util
 
+class Node:
+    def __init__(self,state,parent):
+        self.state = state
+        self.parent = parent
+
 class SearchProblem:
     """
     This class outlines the structure of a search problem, but doesn't implement
@@ -87,18 +92,19 @@ def depthFirstSearch(problem: SearchProblem):
     print("Start's successors:", problem.getSuccessors(problem.getStartState()))
     visited_nodes_dfs = []
     frontier_dfs = util.Stack()
-    frontier_dfs.push(problem.getStartState())
+    frontier_dfs.push((problem.getStartState(),[],0))
 
     while True:
         current_state_dfs = frontier_dfs.pop()
-        if problem.isGoalState(current_state_dfs):
-            break
+        
+        if problem.isGoalState(current_state_dfs[0]):
+            return current_state_dfs[1]
+        
         else:
-            visited_nodes_dfs.append(current_state_dfs)
-            for children_dfs in problem.getSuccessors(current_state_dfs):
-                if (children_dfs[0] not in visited_nodes_dfs) and not(frontier_dfs.containsElement(children_dfs[0])):
-                    frontier_dfs.push(children_dfs[0])
-
+            visited_nodes_dfs.append(current_state_dfs[0])
+            for children_dfs in problem.getSuccessors(current_state_dfs[0]):
+                if (children_dfs not in visited_nodes_dfs) and not(frontier_dfs.containsElement(children_dfs)):
+                    frontier_dfs.push((children_dfs[0],current_state_dfs[1]+children_dfs[1],children_dfs[2]))
                     
 def breadthFirstSearch(problem: SearchProblem):
     """Search the shallowest nodes in the search tree first."""
