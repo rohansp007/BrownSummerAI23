@@ -95,36 +95,37 @@ def depthFirstSearch(problem: SearchProblem):
     frontier_dfs.push((problem.getStartState(),[],0))
 
     while True:
-        current_state_dfs = frontier_dfs.pop()
+        current_state_dfs, moves, _ = frontier_dfs.pop()
         
-        if problem.isGoalState(current_state_dfs[0]):
-            return current_state_dfs[1]
+        if problem.isGoalState(current_state_dfs):
+            return moves
         
         else:
-            visited_nodes_dfs.append(current_state_dfs[0])
-            for children_dfs in problem.getSuccessors(current_state_dfs[0]):
+            visited_nodes_dfs.append(current_state_dfs)
+            for children_dfs,new_move,new_cost in problem.getSuccessors(current_state_dfs):
                 if (children_dfs not in visited_nodes_dfs) and not(frontier_dfs.containsElement(children_dfs)):
-                    frontier_dfs.push((children_dfs[0],current_state_dfs[1]+children_dfs[1],children_dfs[2]))
+                    frontier_dfs.push((children_dfs,moves+[new_move],new_cost))
                     
 def breadthFirstSearch(problem: SearchProblem):
     """Search the shallowest nodes in the search tree first."""
     visited_nodes_bfs = []
     frontier_bfs = util.Queue()
-    frontier_bfs.push(problem.getStartState())
+    frontier_bfs.push((problem.getStartState(),[],0))
 
     while True:
-        current_state_bfs = frontier_bfs.pop()
+        current_state_bfs,moves,_ = frontier_bfs.pop()
+
         if problem.isGoalState(current_state_bfs):
+            return moves
             break
         else:
             visited_nodes_bfs.append(current_state_bfs)
-            for children_bfs in problem.getSuccessors(current_state_bfs):
+            for children_bfs,new_move,new_cost in problem.getSuccessors(current_state_bfs):
                 if (children_bfs[0] not in visited_nodes_bfs) and not(frontier_bfs.containsElement(children_bfs[0])):
-                    frontier_bfs.push(children_bfs[0])
+                    frontier_bfs.push(children_bfs,moves+[new_move],new_cost)
 
 def uniformCostSearch(problem: SearchProblem):
     """Search the node of least total cost first."""
-    "*** YOUR CODE HERE ***"
     util.raiseNotDefined()
 
 def nullHeuristic(state, problem=None):
