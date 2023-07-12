@@ -33,7 +33,8 @@ def maxvalue(asp: AdversarialSearchProblem[GameState,Action],state,player):
         return asp.evaluate_terminal(state)[player]
     bestval = float("-inf")
     for a in asp.get_available_actions(state):
-        val,_ = minvalue(asp,state,player)
+        next_state = asp.transition(state,a)
+        val = minvalue(asp,next_state,player)
         bestval = max(val,bestval)
     return bestval
 
@@ -42,7 +43,8 @@ def minvalue(asp: AdversarialSearchProblem[GameState,Action],state,player):
         return asp.evaluate_terminal(state)[player]
     bestval = float("inf")
     for a in asp.get_available_actions(state):
-        val,_ = minvalue(asp,state,player)
+        next_state = asp.transition(state,a)
+        val = maxvalue(asp,next_state,player)
         bestval = min(bestval,val)
     return bestval
 
