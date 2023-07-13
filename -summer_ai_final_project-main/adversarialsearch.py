@@ -64,38 +64,43 @@ def alpha_beta(asp: AdversarialSearchProblem[GameState, Action]) -> Action:
     state = asp.get_start_state()
     player = state.player_to_move()
     bestval = float("-inf")
+    alpha = float("-inf")
+    beta = float("inf")
     bestmove = None
     for a in asp.get_available_actions(state):
         next_state = asp.transition(state,a)
-        val = minvalue(asp,next_state,player,float("-inf"),float("inf")) 
+        val = minvalue_for_alphabeta(asp,next_state,player,alpha,beta) 
         if val > bestval:
             bestval,bestmove = val,a
+        if val >= beta:
+            break
+        alpha = max(alpha,val)
     return bestmove
 
-def maxvalue(asp: AdversarialSearchProblem[GameState,Action],state,player,alpha,beta):
+def maxvalue_for_alphabeta(asp: AdversarialSearchProblem[GameState,Action],state,player,alpha,beta):
     if asp.is_terminal_state(state):
         return asp.evaluate_terminal(state)[player]
     bestval = float("-inf")
     for a in asp.get_available_actions(state):
         next_state = asp.transition(state,a)
-        val = minvalue(asp,next_state,player)
+        val = minvalue_for_alphabeta(asp,next_state,player,alpha,beta)
         bestval = max(val,bestval)
-        alpha = max(alpha,val)
-        if val >= beta:
+        if bestval >= beta:
             return bestval
+        alpha = max(alpha,bestval)
     return bestval
 
-def minvalue(asp: AdversarialSearchProblem[GameState,Action],state,player,alpha,beta):
+def minvalue_for_alphabeta(asp: AdversarialSearchProblem[GameState,Action],state,player,alpha,beta):
     if asp.is_terminal_state(state):
         return asp.evaluate_terminal(state)[player]
     bestval = float("inf")
     for a in asp.get_available_actions(state):
         next_state = asp.transition(state,a)
-        val = maxvalue(asp,next_state,player)
+        val = maxvalue_for_alphabeta(asp,next_state,player,alpha,beta)
         bestval = min(bestval,val)
-        beta = min(beta,val)
-        if alpha <= val:
+        if bestval <= alpha:
             return bestval
+        beta = min(beta,bestval)
     return bestval
 
 def alpha_beta_cutoff(
