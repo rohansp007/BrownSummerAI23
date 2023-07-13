@@ -1,0 +1,7 @@
+Overall, the Pacman Project went very well because I was able to implement most of the logic for the depth-first search and the 
+breadth-first search parts of the project. I felt that it was very easy for me to implement the logic because the class had 
+explained it in great detail, so I understood what to do. In addition, the pre-written Python code that included all the 
+objects like the Stack and Queue had syntax that was easy to read. One problem that I faced was when I implemented my logic, I 
+found that while the path was shown, Pacman wouldn't move. This was hard because I didn't know what was causing this bug to
+happen. Therefore, I looked through some of the other files to see how Pacman was able to move. After looking for a little, I 
+found that I had to return a set of directions, which worked, but took a long time to implement because of specific Python syntax.
