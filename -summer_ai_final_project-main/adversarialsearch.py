@@ -80,6 +80,9 @@ def maxvalue(asp: AdversarialSearchProblem[GameState,Action],state,player,alpha,
         next_state = asp.transition(state,a)
         val = minvalue(asp,next_state,player)
         bestval = max(val,bestval)
+        alpha = max(alpha,val)
+        if val >= beta:
+            return bestval
     return bestval
 
 def minvalue(asp: AdversarialSearchProblem[GameState,Action],state,player,alpha,beta):
@@ -90,6 +93,9 @@ def minvalue(asp: AdversarialSearchProblem[GameState,Action],state,player,alpha,
         next_state = asp.transition(state,a)
         val = maxvalue(asp,next_state,player)
         bestval = min(bestval,val)
+        beta = min(beta,val)
+        if alpha <= val:
+            return bestval
     return bestval
 
 def alpha_beta_cutoff(
